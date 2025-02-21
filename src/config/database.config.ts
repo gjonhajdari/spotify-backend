@@ -23,7 +23,4 @@ const databaseConfig: { [key: string]: DataSourceOptions } = {
 	},
 };
 
-export default () => {
-	console.log(process.env.NODE_ENV);
-	return databaseConfig[process.env.NODE_ENV || "development"];
-};
+export default () => databaseConfig[process.env.NODE_ENV || "development"];
