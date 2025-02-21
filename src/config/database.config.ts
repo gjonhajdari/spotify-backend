@@ -7,19 +7,19 @@ const databaseConfig: { [key: string]: DataSourceOptions } = {
 		type: "sqlite",
 		database: "db-development.sqlite",
 		synchronize: true,
-		entities: ["dist/**/*.entity.{.ts,.js}"],
+		entities: ["dist/**/entities/*.entity.{ts,js}"],
 	},
 	testing: {
 		type: "sqlite",
 		database: "db-testing.sqlite",
 		synchronize: true,
-		entities: ["dist/**/*.entity.{.ts,.js}"],
+		entities: ["dist/**/entities/*.entity.{ts,js}"],
 	},
 	production: {
 		type: "postgres",
 		url: process.env.DATABASE_URL,
 		synchronize: false,
-		entities: ["dist/**/*.entity.js"],
+		entities: ["dist/**/entities/*.entity.{ts,js}"],
 	},
 };
 
