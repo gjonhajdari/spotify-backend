@@ -10,8 +10,18 @@ export class UsersController {
 		private authService: AuthService,
 	) {}
 
+	@Get()
+	getAllUsers() {
+		return this.usersService.findAll();
+	}
+
 	@Post("/signup")
 	createUser(@Body() body: CreateUserDto) {
 		return this.authService.signup(body);
+	}
+
+	@Post("/login")
+	loginUser(@Body() body: LoginUserDto) {
+		return this.authService.login(body);
 	}
 }

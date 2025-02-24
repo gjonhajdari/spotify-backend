@@ -7,8 +7,13 @@ import { User } from "./entities/user.entity";
 export class UsersService {
 	constructor(@InjectRepository(User) private repo: Repository<User>) {}
 
-	findByEmail(email: string) {
-		return this.repo.findOne({ where: { email } });
+	findAll() {
+		return this.repo.find();
+	}
+
+	findUser(email?: string, username?: string) {
+		if (email) return this.repo.findOne({ where: { email } });
+		return this.repo.findOne({ where: { username } });
 	}
 
 	create(
@@ -30,6 +35,6 @@ export class UsersService {
 			isCreator,
 		});
 
-		return user;
+		return this.repo.save(user);
 	}
 }
